@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
             ),
           ),
           title: Center(
-            child: Text('Physcio..'),
+            child: Text('Physcio App..'),
           ),
         ),
         drawer: AppDrawer(),
