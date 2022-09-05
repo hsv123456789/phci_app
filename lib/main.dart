@@ -3,30 +3,19 @@
 import 'package:flutter/material.dart';
 import 'package:phci/widgets/bottom_nav_bar.dart';
 import 'package:phci/widgets/app_drawer.dart';
+import 'package:phci/widgets/custom_app_bar.dart';
 
 void main(List<String> args) {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Color.fromRGBO(29, 191, 193, 1),
-          toolbarHeight: 60,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(30),
-              bottomRight: Radius.circular(30),
-            ),
-          ),
-          title: Center(
-            child: Text('Physcio App..'),
-          ),
+        appBar: CustomAppBar(
+          input: "Physcio..",
         ),
         drawer: AppDrawer(),
         body: Center(
