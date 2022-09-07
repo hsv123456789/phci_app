@@ -1,19 +1,23 @@
+// ignore_for_file: constant_identifier_names
+
 import 'package:flutter/material.dart';
 import 'package:phci/page/people_page.dart';
 import 'package:phci/page/user_page.dart';
 
 class AppDrawer extends StatelessWidget {
-  final padding = EdgeInsets.symmetric(horizontal: 20);
+  final padding = const EdgeInsets.symmetric(horizontal: 20);
+
+  const AppDrawer({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final name = 'Beluga';
-    final email = 'Beluga@begula.com';
-    final UrlImage =
+    const name = 'Beluga';
+    const email = 'Beluga@begula.com';
+    const UrlImage =
         'https://i.pinimg.com/474x/2a/d5/f8/2ad5f8a792483e7f4524b35847477160.jpg';
     return Drawer(
       child: Material(
-        color: Color.fromRGBO(29, 191, 193, 1),
+        color: const Color.fromRGBO(29, 191, 193, 1),
         child: ListView(
           padding: padding,
           children: [
@@ -22,7 +26,7 @@ class AppDrawer extends StatelessWidget {
                 name: name,
                 email: email,
                 onClicked: () => Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => UserPage(
+                    builder: (context) => const UserPage(
                           name: name,
                           urlImage: UrlImage,
                         )))),
@@ -52,7 +56,7 @@ class AppDrawer extends StatelessWidget {
               onclicked: () => selectedItem(context, 3),
             ),
             const SizedBox(height: 24),
-            Divider(color: Colors.white70),
+            const Divider(color: Colors.white70),
             const SizedBox(height: 24),
             buildMenuItem(
               text: 'Upcoming features',
@@ -79,22 +83,22 @@ class AppDrawer extends StatelessWidget {
       InkWell(
         onTap: onClicked,
         child: Container(
-          padding: padding.add(EdgeInsets.symmetric(vertical: 40)),
+          padding: padding.add(const EdgeInsets.symmetric(vertical: 40)),
           child: Row(
             children: [
               CircleAvatar(radius: 30, backgroundImage: NetworkImage(urlImage)),
-              SizedBox(width: 20),
+              const SizedBox(width: 20),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     name,
-                    style: TextStyle(fontSize: 20, color: Colors.white),
+                    style: const TextStyle(fontSize: 20, color: Colors.white),
                   ),
                   const SizedBox(height: 4),
                   Text(
                     email,
-                    style: TextStyle(fontSize: 14, color: Colors.white),
+                    style: const TextStyle(fontSize: 14, color: Colors.white),
                   ),
                 ],
               ),
@@ -103,15 +107,16 @@ class AppDrawer extends StatelessWidget {
         ),
       );
   Widget buildSearchField() {
-    final color = Colors.white;
+    const color = Colors.white;
 
     return TextField(
-      style: TextStyle(color: color),
+      style: const TextStyle(color: color),
       decoration: InputDecoration(
-        contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+        contentPadding:
+            const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
         hintText: 'Search',
-        hintStyle: TextStyle(color: color),
-        prefixIcon: Icon(Icons.search, color: color),
+        hintStyle: const TextStyle(color: color),
+        prefixIcon: const Icon(Icons.search, color: color),
         filled: true,
         fillColor: Colors.white12,
         enabledBorder: OutlineInputBorder(
@@ -131,7 +136,7 @@ class AppDrawer extends StatelessWidget {
     IconData icon,
     VoidCallback onclicked,
   }) {
-    final color = Colors.white;
+    const color = Colors.white;
     return ListTile(
       leading: Icon(
         icon,
@@ -139,7 +144,7 @@ class AppDrawer extends StatelessWidget {
       ),
       title: Text(
         text,
-        style: TextStyle(color: color),
+        style: const TextStyle(color: color),
       ),
       onTap: onclicked,
     );

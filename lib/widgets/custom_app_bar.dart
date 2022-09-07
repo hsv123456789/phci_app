@@ -17,7 +17,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           bottomRight: Radius.circular(30),
         ),
       ),
-      title: Center(
+      title: const Center(
         child: Text("Physcio.."),
       ),
     );

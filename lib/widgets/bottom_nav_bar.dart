@@ -3,6 +3,8 @@
 import 'package:flutter/material.dart';
 
 class BottomNavBar extends StatefulWidget {
+  const BottomNavBar({Key key}) : super(key: key);
+
   @override
   State<BottomNavBar> createState() => _BottomNavBarState();
 }
@@ -29,10 +31,10 @@ class _BottomNavBarState extends State<BottomNavBar> {
                 Center(
                   heightFactor: 0.8,
                   child: FloatingActionButton(
-                    onPressed: () {},
+                    onPressed: () => _dialogBuilder(context),
                     backgroundColor: Colors.red,
-                    child: Icon(Icons.sos),
                     tooltip: 'Request emergency',
+                    child: Icon(Icons.sos),
                   ),
                 ),
                 SizedBox(
@@ -76,6 +78,39 @@ class _BottomNavBarState extends State<BottomNavBar> {
           )
         ],
       ),
+    );
+  }
+
+  Future<void> _dialogBuilder(BuildContext context) {
+    return showDialog<void>(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Are you sure ?'),
+          content: const Text(
+              ' WARNING: You cant reverse the sos message sent thrugh this app\n'),
+          actions: <Widget>[
+            TextButton(
+              style: TextButton.styleFrom(
+                textStyle: Theme.of(context).textTheme.labelLarge,
+              ),
+              child: const Text('No'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            TextButton(
+              style: TextButton.styleFrom(
+                textStyle: Theme.of(context).textTheme.labelLarge,
+              ),
+              child: const Text('Yes'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
     );
   }
 }
