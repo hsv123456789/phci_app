@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:phci/widgets/input_field.dart';
 import 'package:phci/page/main_page.dart';
+import 'package:phci/page/register.dart';
 
 class InputWrapper extends StatelessWidget {
   const InputWrapper({Key key}) : super(key: key);
@@ -36,17 +37,48 @@ class InputWrapper extends StatelessWidget {
               ),
               SingleChildScrollView(
                 child: SizedBox(
-                  height: 50,
-                  width: 200,
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color.fromRGBO(29, 191, 193, 1),
-                    ),
-                    onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => MainPage()));
-                    },
-                    child: const Text("Login"),
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        height: 50,
+                        width: 200,
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor:
+                                const Color.fromRGBO(29, 191, 193, 1),
+                          ),
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const MainPage()));
+                          },
+                          child: const Text("Login"),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 50,
+                      ),
+                      SizedBox(
+                        height: 50,
+                        width: 200,
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor:
+                                const Color.fromRGBO(29, 191, 193, 1),
+                          ),
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const MyRegister(),
+                              ),
+                            );
+                          },
+                          child: const Text("Register"),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               )

@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 import 'package:phci/widgets/input_wrapper.dart';
 
@@ -34,7 +36,7 @@ class LoginPage extends StatelessWidget {
                     topLeft: Radius.circular(60),
                     topRight: Radius.circular(60),
                   )),
-              child: InputWrapper(),
+              child: const InputWrapper(),
             ))
           ],
         ),
