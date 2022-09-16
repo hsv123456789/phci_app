@@ -22,46 +22,56 @@ class MyRegister extends StatelessWidget {
         ),
       ),
       body: Center(
-        child: Column(children: [
-          const Text('Register'),
-          const SizedBox(
-            width: 300,
-            child: TextField(
-              decoration: InputDecoration(hintText: 'Enter your Email id'),
+        child: SingleChildScrollView(
+          child: Column(children: [
+            const Text(
+              'REGISTER',
+              style: TextStyle(fontSize: 20),
             ),
-          ),
-          const SizedBox(
-            width: 300,
-            child: TextField(
-              decoration: InputDecoration(hintText: 'Enter your password'),
-            ),
-          ),
-          const SizedBox(
-            width: 300,
-            child: TextField(
-              decoration:
-                  InputDecoration(hintText: 'Enter your password again'),
-            ),
-          ),
-          SizedBox(
-            height: 50,
-            width: 200,
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: const Color.fromRGBO(29, 191, 193, 1),
+            const SizedBox(
+              width: 300,
+              child: TextField(
+                decoration: InputDecoration(hintText: 'Enter your Email id'),
               ),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => LoginPage(),
-                  ),
-                );
-              },
-              child: const Text("Register"),
             ),
-          ),
-        ]),
+            const SizedBox(
+              width: 300,
+              child: TextField(
+                decoration: InputDecoration(hintText: 'Enter your password'),
+              ),
+            ),
+            const SizedBox(
+              width: 300,
+              child: TextField(
+                decoration:
+                    InputDecoration(hintText: 'Enter your password again'),
+              ),
+            ),
+            const SizedBox(
+              height: 100,
+            ),
+            SingleChildScrollView(
+              child: SizedBox(
+                height: 50,
+                width: 200,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color.fromRGBO(29, 191, 193, 1),
+                  ),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => LoginPage(),
+                      ),
+                    );
+                  },
+                  child: const Text("Register"),
+                ),
+              ),
+            ),
+          ]),
+        ),
       ),
     );
   }
