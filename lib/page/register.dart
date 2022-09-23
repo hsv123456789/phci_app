@@ -18,7 +18,9 @@ class MyRegister extends StatelessWidget {
           ),
         ),
         title: const Center(
-          child: Text("register"),
+          child: Center(
+            child: Text('Register'),
+          ),
         ),
       ),
       body: Center(
@@ -30,21 +32,21 @@ class MyRegister extends StatelessWidget {
             ),
             const SizedBox(
               width: 300,
+              height: 75,
               child: TextField(
-                decoration: InputDecoration(hintText: 'Enter your Email id'),
+                decoration: InputDecoration(hintText: ' Email id'),
               ),
             ),
             const SizedBox(
               width: 300,
               child: TextField(
-                decoration: InputDecoration(hintText: 'Enter your password'),
+                decoration: InputDecoration(hintText: 'Password'),
               ),
             ),
             const SizedBox(
               width: 300,
               child: TextField(
-                decoration:
-                    InputDecoration(hintText: 'Enter your password again'),
+                decoration: InputDecoration(hintText: 'Confirm password'),
               ),
             ),
             const SizedBox(
