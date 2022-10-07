@@ -39,18 +39,22 @@ class MyRegister extends StatelessWidget {
             ),
             const SizedBox(
               width: 300,
+              height: 75,
               child: TextField(
                 decoration: InputDecoration(hintText: 'Password'),
+                obscureText: true,
+                enableSuggestions: false,
               ),
             ),
             const SizedBox(
               width: 300,
+              height: 75,
               child: TextField(
                 decoration: InputDecoration(hintText: 'Confirm password'),
+                keyboardType: TextInputType.visiblePassword,
+                obscureText: true,
+                enableSuggestions: false,
               ),
-            ),
-            const SizedBox(
-              height: 100,
             ),
             SingleChildScrollView(
               child: SizedBox(
