@@ -5,7 +5,7 @@ import 'package:phci/widgets/custom_app_bar.dart';
 
 class MainPage extends StatelessWidget {
   const MainPage({Key key}) : super(key: key);
-
+  static const String routeName = '/main';
   @override
   Widget build(BuildContext context) {
     return Scaffold(

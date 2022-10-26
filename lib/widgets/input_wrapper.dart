@@ -3,8 +3,15 @@ import 'package:phci/widgets/input_field.dart';
 import 'package:phci/page/main_page.dart';
 import 'package:phci/page/register.dart';
 
-class InputWrapper extends StatelessWidget {
+class InputWrapper extends StatefulWidget {
   const InputWrapper({Key key}) : super(key: key);
+
+  @override
+  State<InputWrapper> createState() => _InputWrapperState();
+}
+
+class _InputWrapperState extends State<InputWrapper> {
+  final LoginDataFetcher inputfieldState = LoginDataFetcher();
 
   @override
   Widget build(BuildContext context) {
@@ -23,13 +30,23 @@ class InputWrapper extends StatelessWidget {
                 decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(10)),
-                child: InputField(),
+                child: const InputField(),
               ),
               const SizedBox(
                 height: 40,
               ),
               TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  final snackBar = SnackBar(
+                    content: const Text(
+                        'Email sent to your particuar email address '),
+                    action: SnackBarAction(
+                      label: 'Ok!',
+                      onPressed: () {},
+                    ),
+                  );
+                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                },
                 style: TextButton.styleFrom(foregroundColor: Colors.grey),
                 child: const Text("Forgot Password"),
               ),
@@ -49,10 +66,7 @@ class InputWrapper extends StatelessWidget {
                                 const Color.fromRGBO(29, 191, 193, 1),
                           ),
                           onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => const MainPage()));
+                            inputfieldState.signInUser(context);
                           },
                           child: const Text("Login"),
                         ),

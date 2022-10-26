@@ -1,8 +1,46 @@
 import 'package:flutter/material.dart';
 import 'package:phci/page/login_page.dart';
+import 'package:phci/services/auth_service.dart';
 
-class MyRegister extends StatelessWidget {
+class MyRegister extends StatefulWidget {
   const MyRegister({Key key}) : super(key: key);
+
+  @override
+  State<MyRegister> createState() => _MyRegisterState();
+}
+
+class _MyRegisterState extends State<MyRegister> {
+  final AuthService authService = AuthService();
+  final _textControllerUsername = TextEditingController();
+
+  final _textControllerPassword = TextEditingController();
+
+  final _textControllerPassword2 = TextEditingController();
+  String userName = '';
+  bool _passwordVisible = true;
+  bool _confirnpasswordVisible = true;
+  @override
+  void dispose() {
+    super.dispose();
+    _textControllerPassword.dispose();
+    _textControllerPassword2.dispose();
+    _textControllerUsername.dispose();
+  }
+
+  void registerUser() {
+    authService.registerUser(
+      context: context,
+      name: _textControllerUsername.text,
+      password: _textControllerPassword.text,
+    );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _passwordVisible = false;
+    _confirnpasswordVisible = false;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,29 +68,55 @@ class MyRegister extends StatelessWidget {
               'REGISTER',
               style: TextStyle(fontSize: 20),
             ),
-            const SizedBox(
+            SizedBox(
               width: 300,
               height: 75,
               child: TextField(
-                decoration: InputDecoration(hintText: ' Email id'),
+                controller: _textControllerUsername,
+                decoration: const InputDecoration(hintText: ' Username'),
               ),
             ),
-            const SizedBox(
+            SizedBox(
               width: 300,
               height: 75,
               child: TextField(
-                decoration: InputDecoration(hintText: 'Password'),
-                obscureText: true,
+                controller: _textControllerPassword,
+                decoration: InputDecoration(
+                  hintText: 'Password',
+                  suffixIcon: IconButton(
+                    onPressed: () {
+                      setState(() {
+                        _passwordVisible = !_passwordVisible;
+                      });
+                    },
+                    icon: Icon(_passwordVisible
+                        ? Icons.visibility
+                        : Icons.visibility_off),
+                    color: Colors.grey,
+                  ),
+                ),
+                obscureText: !_passwordVisible,
                 enableSuggestions: false,
               ),
             ),
-            const SizedBox(
+            SizedBox(
               width: 300,
               height: 75,
               child: TextField(
-                decoration: InputDecoration(hintText: 'Confirm password'),
+                controller: _textControllerPassword2,
+                decoration: InputDecoration(
+                    hintText: 'Confirm password',
+                    suffixIcon: IconButton(
+                        onPressed: () {
+                          setState(() {
+                            _confirnpasswordVisible = !_confirnpasswordVisible;
+                          });
+                        },
+                        icon: Icon(_confirnpasswordVisible
+                            ? Icons.visibility
+                            : Icons.visibility_off))),
                 keyboardType: TextInputType.visiblePassword,
-                obscureText: true,
+                obscureText: !_confirnpasswordVisible,
                 enableSuggestions: false,
               ),
             ),
@@ -65,6 +129,7 @@ class MyRegister extends StatelessWidget {
                     backgroundColor: const Color.fromRGBO(29, 191, 193, 1),
                   ),
                   onPressed: () {
+                    registerUser();
                     Navigator.push(
                       context,
                       MaterialPageRoute(
